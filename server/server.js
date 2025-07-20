@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use('/api/rooms', RoomRoutes);
+app.use('/api/rooms', require('./routes/roomRoutes'));
 
 //  Connect to MongoDB
 mongoose

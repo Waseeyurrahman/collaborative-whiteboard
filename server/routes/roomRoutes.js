@@ -3,6 +3,10 @@ const Room = require('../models/Room');
 const Drawing = require('../models/Drawing');
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.send('✅ Collaborative Whiteboard API is working');
+  });
+
 router.post('/join', async (req, res) => {
   const { roomId } = req.body;
   try {
