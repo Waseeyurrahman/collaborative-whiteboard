@@ -12,7 +12,7 @@ const server = http.createServer(app);
 //  Allow both localhost and Vercel frontend
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://your-frontend.vercel.app' // 🔁 Replace with your actual deployed frontend URL
+  'https://collaborative-whiteboard-red.vercel.app' // 🔁 Replace with your actual deployed frontend URL
 ];
 
 // CORS setup for Express
