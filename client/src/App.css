@@ -1,0 +1,319 @@
+/* === GLOBAL STYLES === */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #e0f7fa, #ffffff, #d0f0fd, #f3f9ff);
+    background-size: 400% 400%;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    animation: gradientBG 15s ease infinite;
+    overflow: auto;
+  }
+  
+  /* === GRADIENT ANIMATION === */
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* === JOIN CONTAINER (Login Page) === */
+  .join-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease;
+  }
+  
+  .join-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #222;
+  }
+
+  .centered-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  
+  .join-input {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    width: 260px;
+  }
+  
+  .join-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .join-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* === MAIN WHITEBOARD CONTAINER === */
+  .whiteboard-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e0f7fa, #fce4ec, #f3e5f5, #e3f2fd);
+    background-size: 400% 400%;
+    animation: gradientBGEnhanced 20s ease infinite;
+    backdrop-filter: blur(8px);
+  }
+  
+  
+  /* === TOOLBAR === */
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    animation: fadeIn 1s ease;
+  }
+  
+  .toolbar label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  /* === TOOLBAR INPUTS === */
+  .toolbar input[type="color"],
+  .toolbar input[type="range"],
+  .toolbar button {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+  }
+  
+  .toolbar input[type="range"] {
+    accent-color: #007bff;
+    cursor: pointer;
+  }
+  
+  .toolbar input[type="color"] {
+    border: none;
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
+  }
+  
+  /* === CLEAR BUTTON === */
+  .toolbar .clear-button,
+  .toolbar button {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .toolbar .clear-button:hover,
+  .toolbar button:hover {
+    background-color: #c53030;
+    transform: scale(1.05);
+  }
+  
+  /* === CANVAS AREA === */
+  .whiteboard-canvas {
+    flex: 1;
+    width: 100%;
+    height: calc(100vh - 70px);
+    margin-top: 90px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    cursor: crosshair;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .whiteboard-canvas:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* === ANIMATIONS === */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* === RESPONSIVENESS === */
+  @media (max-width: 600px) {
+    .toolbar {
+      flex-direction: column;
+    }
+    .toolbar input,
+    .toolbar button {
+      width: 90%;
+      margin: 5px 0;
+    }
+  
+    .join-container {
+      width: 90%;
+      padding: 1.5rem;
+    }
+  
+    .join-input {
+      width: 100%;
+    }
+
+  }
+  .user-count {
+    position: fixed;
+    top: 80px; /* Just below the toolbar */
+    right: 20px;
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    z-index: 999;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease;
+  }
+  .cursor-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #007bff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+  }
+  .leave-button {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    background-color: #555;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    z-index: 999;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .leave-button:hover {
+    background-color: #333;
+    transform: scale(1.05);
+  }
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  /* === ENHANCED WHITEBOARD BACKGROUND === */
+.whiteboard-container {
+    background: linear-gradient(135deg, #e0f7fa, #fce4ec, #f3e5f5, #e3f2fd);
+    background-size: 400% 400%;
+    animation: gradientBGEnhanced 20s ease infinite;
+    backdrop-filter: blur(8px);
+    padding: 1rem;
+  }
+  
+  /* More vivid animated gradient */
+  @keyframes gradientBGEnhanced {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* === LEAVE ROOM BUTTON ENHANCED === */
+  .leave-button {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 16px;
+    font-weight: bold;
+    z-index: 999;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(255, 75, 43, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .leave-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 75, 43, 0.6);
+  }
+  
+  /* === INPUT & BUTTON GLOW ON HOVER === */
+  .join-input:focus,
+  .toolbar input[type="color"]:hover,
+  .toolbar input[type="range"]:hover,
+  .toolbar button:hover {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* === GLOWING USER COUNT === */
+  .user-count {
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+    color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+  }
+  
+  /* === BUTTON FLOAT ANIMATION === */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .leave-button,
+  .toolbar button,
+  .join-button {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  
+  
+  
+
+  
+  
